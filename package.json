@@ -6,5 +6,11 @@
 	"dependencies": {
 		"@laufire/utils": "^2.9.0",
 		"faker": "^5.5.3"
-	}
+	},
+  "scripts": {
+    "lint": "npx eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0"
+  }
 }

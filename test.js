@@ -1,68 +1,43 @@
-const fakerParser = require("./index");
-const {rndBetween} = require("@laufire/utils/random");
-const {range,result} = require("@laufire/utils/collection");
+/* eslint-disable no-console */
+const fakerParser = require('./index');
 
-const custom = {
-    firstName: () => "nithesh",
-    helpers: {
-        positive: () => 1,
-        negative: () => -1
-    },
+const one = 1;
+
+const overides = {
+	firstName: () => 'someone',
+	helpers: {
+		positive: () => one,
+		negative: () => -one,
+	},
 };
 
-const parse = fakerParser(custom);
+const parse = fakerParser(overides);
 
 console.log(parse({
-    name: "firstName",
-    email: "internet/email",
-    details: {
-        card: "helpers/createCard",
-        demo: {
-            age: "random/number",
-            test: {
-                name: "name/findName",
-            },
-        },
-    },
-    age: "helpers/positive",
-    gender: () => "male",
-    children: [
-        1,
-        "firstName"
-    ],
+	name: 'firstName',
+	email: 'internet/email',
+	details: {
+		card: 'helpers/createCard',
+		demo: {
+			age: 'random/number',
+			test: {
+				name: 'name/findName',
+			},
+		},
+	},
+	age: 'helpers/positive',
+	gender: () => 'male',
+	children: [
+		1,
+		'firstName',
+	],
 }));
 
-console.log(parse(custom.firstName));
+console.log(parse(overides.firstName));
 
-console.log(parse(
-    [
-        () => 0,
-        {
-            name: "name/firstName"
-        }
-    ]
-));
-
-console.log(parse({
-    name: "name/firstName",
-    cost: () => rndBetween(0,10),
-    tasks: [
-        () => rndBetween(0,5),
-        {
-            name: "name/firstName",
-            tasks: [
-                () => rndBetween(0,2),
-                {
-                    age: () => rndBetween(1,99)
-                }
-            ]
-        }
-    ]
-}));
-
-
-
-
-
-
-
+console.log(parse([
+	() => 0,
+	{
+		name: 'name/firstName',
+	},
+]));

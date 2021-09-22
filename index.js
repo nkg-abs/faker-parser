@@ -1,33 +1,35 @@
-const faker = require("faker");
-const {inferType} = require("@laufire/utils/reflection");
-const {range,result} = require("@laufire/utils/collection");
-const {value} = require("@laufire/utils/fn");
+const faker = require('faker');
+const { inferType } = require('@laufire/utils/reflection');
+const { range, result } = require('@laufire/utils/collection');
+const { value } = require('@laufire/utils/fn');
 
 const parser = (overides = {}) => {
-    const defaultAction = (value) => value;
+	const defaultAction = (data) => data;
 
-    const actions = {
-        string: (value) => 
-            (result(overides,value) 
-                || result(faker,value)
-                )(),
+	const actions = {
+		string: (data) => (result(overides, data) || result(faker, data))(),
 
-        object: (value) => {
-            const output = {};
-            Object.keys(value).forEach((item) => 
-                output[item] = parse(value[item]));
-            return output;
-        },
-        
-        function: (value) => value(),
+		object: (data) => {
+			const output = {};
 
-        array: ([count,template]) => 
-            range(0,value(count)).map(() => parse(template))
-    };
+			Object.keys(data).forEach((item) => {
+				// eslint-disable-next-line no-use-before-define
+				output[item] = parse(data[item]);
+			});
 
-    const parse = (data) => (actions[inferType(data)] || defaultAction)(data);
+			return output;
+		},
 
-    return parse;
+		function: (fn) => fn(),
+
+		array: ([count, template]) =>
+			// eslint-disable-next-line no-use-before-define
+			range(0, value(count)).map(() => parse(template)),
+	};
+
+	const parse = (data) => (actions[inferType(data)] || defaultAction)(data);
+
+	return parse;
 };
 
 module.exports = parser;
