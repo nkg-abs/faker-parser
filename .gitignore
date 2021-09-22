@@ -16,6 +16,3 @@ coverage
 !.editorconfig
 !.eslint*
 dist
-
-##temp
-examples

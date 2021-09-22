@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
-const fakerParser = require('./index');
+const fakerParser = require('../index');
+const { pretty } = require('@laufire/utils/debug');
 
 const one = 1;
-
-const overides = {
+const custom = {
 	firstName: () => 'someone',
 	helpers: {
 		positive: () => one,
@@ -11,9 +10,10 @@ const overides = {
 	},
 };
 
-const parse = fakerParser(overides);
+const parse = fakerParser(custom);
 
-console.log(parse({
+// eslint-disable-next-line no-console
+console.log(pretty(parse({
 	name: 'firstName',
 	email: 'internet/email',
 	details: {
@@ -31,13 +31,4 @@ console.log(parse({
 		1,
 		'firstName',
 	],
-}));
-
-console.log(parse(overides.firstName));
-
-console.log(parse([
-	() => 0,
-	{
-		name: 'name/firstName',
-	},
-]));
+})));
