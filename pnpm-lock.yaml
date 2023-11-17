@@ -1,12 +1,12 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
-  '@laufire/utils': ^2.9.0
+  '@laufire/utils': 3.0.0-0
   eslint: ^7.29.0
   faker: ^5.5.3
 
 dependencies:
-  '@laufire/utils': 2.9.0
+  '@laufire/utils': 3.0.0-0
   faker: 5.5.3
 
 devDependencies:
@@ -73,8 +73,8 @@ packages:
     resolution: {integrity: sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==}
     dev: true
 
-  /@laufire/utils/2.9.0:
-    resolution: {integrity: sha512-0WWfCz/LgcHIIbY6sSnNEPl9noBIhbS8RrpgDxd/0DllNN+jg6AzxD94JbDVQxLDf43ColINtJQMAOBlb1tSEg==}
+  /@laufire/utils/3.0.0-0:
+    resolution: {integrity: sha512-NQK/odg5weAAG9UqFhibSfW0BLgGcT+H7yNc82jEbqfToCyJL0SBI40pB34HqlF850IhKRUQ6uBFA6Ip6K66ww==}
     dependencies:
       '@babel/runtime': 7.14.6
     optionalDependencies:
@@ -420,6 +420,7 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    requiresBuild: true
     dev: false
     optional: true
 
